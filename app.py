@@ -22,9 +22,7 @@ class User(db.Model):
 with app.app_context():
     db.create_all()
 # Load the trained model
-model = joblib.load(
-    r"C:\Users\shaik\OneDrive\Desktop\AIML Project\Epic 5 Application Building\Random_Forest_Model.pkl"
-)
+model = joblib.load("Random_Forest_Model.pkl")
 
 print("Features expected:", model.n_features_in_)
 
@@ -125,6 +123,5 @@ def predict():
     except Exception as e:
         return str(e)
 
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
